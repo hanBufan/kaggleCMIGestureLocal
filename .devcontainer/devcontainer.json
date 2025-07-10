@@ -1,0 +1,19 @@
+{
+  "name": "Kaggle GPU Image",  
+  "image": "gcr.io/kaggle-gpu-images/python",  // 使用 Kaggle GPU 镜像
+  "runArgs": [
+    "--runtime", "nvidia",  // 启用 GPU
+    "--gpus", "all"  // 让 Docker 容器访问所有 GPU
+  ],
+  "settings": {
+    "python.pythonPath": "/usr/local/bin/python"  // 指定 Python 解释器路径
+  },
+  "extensions": [
+    "ms-python.python"  // 安装 Python 扩展
+  ],
+  "postCreateCommand": "pip install ipykernel",  // 在容器创建后安装 ipykernel
+  "mounts": [
+    "source=A:/VSC proj/xiaoSuanCMI,target=/workspace,type=bind"  // 将本地代码目录挂载到容器中
+  ],
+  "remoteUser": "root"  // 以 root 用户身份运行容器
+}
